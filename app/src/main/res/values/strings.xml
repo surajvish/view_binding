@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">view_binding</string>
+    <string name="title_activity_show_user_list">ShowUserListActivity</string>
 </resources>
