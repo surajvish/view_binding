@@ -14,7 +14,7 @@ public class ShowUserPresenter {
         this.mainActivity = activity;
     }
 
-    public void showData(){
-        Toast.makeText(mainActivity,"Le",Toast.LENGTH_LONG).show();
+    public void toastFromPresenter(){
+        Toast.makeText(mainActivity,"Toast displayed in Show User Presenter!",Toast.LENGTH_LONG).show();
     }
 }

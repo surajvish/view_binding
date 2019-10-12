@@ -4,34 +4,45 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.view_binding.databinding.ActivityMainBinding;
+import com.example.view_binding.model.OnUserAddListner;
 import com.example.view_binding.model.UserDetails;
-import com.example.view_binding.presenter.OpenActivityPresenter;
-import com.example.view_binding.presenter.ShowUserPresenter;
+import com.example.view_binding.presenter.AddUserPresenter;
+import com.example.view_binding.presenter.UpdateUser;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements OnUserAddListner {
 
     private UserDetails user;
+    private UpdateUser updateUser;
+    private int i = 0;
+    private List<UserDetails> userDetails = new ArrayList<>();
+    private ListView listView;
+    private ArrayAdapter<UserDetails> itemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityMainBinding viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        ShowUserPresenter showUserPresenter = new ShowUserPresenter(this);
-        OpenActivityPresenter openActivityPresenter = new OpenActivityPresenter(this);
+        AddUserPresenter addUserPresenter = new AddUserPresenter(this);
+        viewDataBinding.setAddUser(addUserPresenter);
 
-        user = new UserDetails("Name : Data Binding", "Version :2.0.1");
-        viewDataBinding.setUser(user);
-        viewDataBinding.setPresenter(showUserPresenter);
-        viewDataBinding.setMainpresenter(MainActivity.this);
-        viewDataBinding.setIntentPresenter(openActivityPresenter);
+
+        listView = findViewById(R.id.showUserList);
+        itemsAdapter = new ArrayAdapter<UserDetails>(this, android.R.layout.simple_list_item_1, userDetails);
+        listView.setAdapter(itemsAdapter);
 
     }
 
-    public void toastExample(View view) {
-        Toast.makeText(this, "Tu bhi Le", Toast.LENGTH_LONG).show();
+
+    @Override
+    public void updateListView(UserDetails userDetails) {
+        this.userDetails.add(userDetails);
+        itemsAdapter.notifyDataSetChanged();
     }
 }
