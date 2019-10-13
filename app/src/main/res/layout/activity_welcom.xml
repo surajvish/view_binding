@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="welcome"
+            type="com.example.view_binding.model.WelcomMessage" />
+
+        <variable
+            name="welcomActivityPresenter"
+            type="com.example.view_binding.WelcomActivity" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="@{welcome.welcomeMessage}"></TextView>
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="@{welcome.version}"></TextView>
+
+
+        <LinearLayout
+            android:layout_below="@+id/version"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:onClick="@{welcomActivityPresenter::OpenMainActivity}"
+                android:text="Main Activity!"></Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/version"
+                android:onClick="@{welcomActivityPresenter::openAdapterBinding}"
+                android:text="Adapter Binding!"></Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/version"
+                android:onClick="@{welcomActivityPresenter::openObserverBinding}"
+                android:text="Observer Activity!"></Button>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

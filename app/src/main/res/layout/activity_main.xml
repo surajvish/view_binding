@@ -4,76 +4,41 @@
     <data>
 
         <variable
-            name="user"
-            type="com.example.view_binding.model.UserDetails"></variable>
-
-        <variable
-            name="presenter"
-            type="com.example.view_binding.presenter.ShowUserPresenter" />
-
-        <variable
-            name="mainpresenter"
-            type="com.example.view_binding.MainActivity" />
-
-        <variable
-            name="intentPresenter"
-            type="com.example.view_binding.presenter.OpenActivityPresenter" />
+            name="addUser"
+            type="com.example.view_binding.presenter.AddUserPresenter" />
     </data>
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:hint="Enter Name" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:text="@{user.name}"
-                android:textSize="23dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:text="@{user.age}"
-                android:textSize="23dp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <EditText
+            android:id="@+id/edtAge"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="Enter Age" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="@{()->presenter.showData()}"
-                android:text="Presenter"></Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->addUser.addUserToList(edtName.getText().toString(),edtAge.getText().toString())}"
+            android:text="ADD User" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="@{mainpresenter::toastExample}"
-                android:text="Main Activity"></Button>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="@{()->intentPresenter.openUserListActivity()}"
-                android:text="ListActivity"></Button>
-        </LinearLayout>
+        <ListView
+            android:id="@+id/showUserList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
 
     </LinearLayout>
-
 
 </layout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="updateUser"
+            type="com.example.view_binding.presenter.UpdateUser" />
+
+        <variable
+            name="oberverActivity"
+            type="com.example.view_binding.ObserverActivity" />
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edtFname"
+            android:hint="Enter First Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></EditText>
+
+        <EditText
+            android:id="@+id/edtlname"
+            android:hint="Enter Last Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></EditText>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> oberverActivity.updateDataUsingOberver(edtFname.getText().toString(),edtlname.getText().toString())}"
+            android:text="Update User"></Button>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{updateUser.firstName}"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{updateUser.lastName}"></TextView>
+
+    </LinearLayout>
+</layout>

@@ -34,4 +34,13 @@ public class WelcomActivity extends AppCompatActivity {
     public void OpenMainActivity(View view) {
         startActivity(new Intent(this, MainActivity.class));
     }
+
+    public void openObserverBinding(View view) {
+        startActivity(new Intent(this, ObserverActivity.class));
+    }
+
+    public void openAdapterBinding(View view) {
+        startActivity(new Intent(this, AdapterBinding.class));
+    }
+
 }

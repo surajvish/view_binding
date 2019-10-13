@@ -1,30 +1,35 @@
 package com.example.view_binding;
 
-import android.os.Bundle;
-
-import com.example.view_binding.presenter.UpdateUser;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
+import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+
+import com.example.view_binding.databinding.ActivityObserverBinding;
+import com.example.view_binding.presenter.UpdateUser;
 
 public class ObserverActivity extends AppCompatActivity {
 
-    private UpdateUser updateUser = new UpdateUser();
+    private UpdateUser updateUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DataBindingUtil.setContentView(this, R.layout.activity_show_user_list);
-
+        updateUser = new UpdateUser();
+        ActivityObserverBinding activityObserverBinding = DataBindingUtil.setContentView(this, R.layout.activity_observer);
+        activityObserverBinding.setUpdateUser(updateUser);
+        activityObserverBinding.setOberverActivity(ObserverActivity.this);
 
     }
 
+    public void updateDataUsingOberver(String fname,String lname) {
 
-    public void updateUserUsingObserver(String firstName, String lastName) {
-        updateUser.setFirstName(firstName);
-        updateUser.setLastName(lastName);
-
+//        EditText edtFname = findViewById(R.id.edtFname);
+//        EditText edtlname = findViewById(R.id.edtlname);
+        updateUser.setFirstName(fname);
+        updateUser.setLastName(lname);
     }
 }
