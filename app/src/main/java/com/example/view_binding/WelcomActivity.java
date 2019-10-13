@@ -22,9 +22,7 @@ public class WelcomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        WelcomMessage welcomMessage = new WelcomMessage("Name : Welcom to Data Binding", "Version :2.0.1");
-
+        WelcomMessage welcomMessage = new WelcomMessage("Name : Welcome to Data Binding", "Version :2.0.1");
         ActivityWelcomBinding viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_welcom);
         viewDataBinding.setWelcome(welcomMessage);
         viewDataBinding.setWelcomActivityPresenter(WelcomActivity.this);
