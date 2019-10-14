@@ -30,6 +30,7 @@ public class WelcomActivity extends AppCompatActivity {
 
 
     public void OpenMainActivity(View view) {
+        //Toast.makeText(this,"Main Activity",Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, MainActivity.class));
     }
 
